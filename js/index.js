@@ -27,7 +27,8 @@ function calculateAll() {
   
 
   // ITERATION 3
-  //... your code goes here
+  totalValue = document.getElementById("total-value");
+  totalValue.innerHTML=updateSubtotal(rubberDuck)+updateSubtotal(beachTowel);
 }
 
 // ITERATION 4
