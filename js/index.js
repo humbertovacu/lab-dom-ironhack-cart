@@ -6,7 +6,7 @@ function updateSubtotal(product) {
   let subtotal = price * quantity;
   let printSubtotal = product.querySelector('.subtotal span');
   printSubtotal.innerHTML = subtotal;
-  return subtotal;
+  return subtotal
 }
 
 function calculateAll() {
@@ -28,16 +28,44 @@ function calculateAll() {
 
   // ITERATION 3
   totalValue = document.getElementById("total-value");
-  totalValue.innerHTML=updateSubtotal(rubberDuck)+updateSubtotal(beachTowel);
+  totalValue.innerHTML=`Total: $${updateSubtotal(rubberDuck)+updateSubtotal(beachTowel)}`;
 }
 
 // ITERATION 4
 
 function removeProduct(event) {
   const target = event.currentTarget;
-  console.log('The target in remove is:', target);
-  //... your code goes here
+  const targetElement = document.getElementsByClassName('product');
+  let trigger = target.parentNode.parentNode;
+  let resetValue = trigger.querySelector('input');
+  if (target){
+  resetValue.value = 0;
+  calculateAll();
+  trigger.style.display = 'none'};
+  // const productChild = document.getElementsByTagName('td');
+  // let productChildArray = [...productChild];
+  // for(let i = 0; i<productChild.length;i++){
+  //   let removeProduct = productChild[i];
+  // return target[0].removeChild(removeProduct)};
+//   let allProductChildren;
+//   for (let i = 0; i < productChild.length; i++){
+//     allProductChildren = productChild[i];
+//   }
+//  return target[0].removeChild(allProductChildren)
+ //  if(trigger){resetValue = 0;
+//  trigger.style.visibility = "hidden";
+// };
+
+
+//  trigger.replaceChildren(resetValue);
+//  let triggerValue = trigger.querySelector(".subtotal span")
+//  triggerValue.innerHTML = 0 
+//  trigger.style.visibility = "hidden";
+ 
+
 }
+
+
 
 // ITERATION 5
 
@@ -47,7 +75,11 @@ function createProduct() {
 
 window.addEventListener('load', () => {
   const calculatePricesBtn = document.getElementById('calculate');
+  const removeButton = document.getElementsByClassName("btn btn-remove");
   calculatePricesBtn.addEventListener('click', calculateAll);
-  //... your code goes here
+  for(let i = 0; i < removeButton.length; i ++){
+    removeButton[i].addEventListener('click', removeProduct);
+  }
 });
+
 
