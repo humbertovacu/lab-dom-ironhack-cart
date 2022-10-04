@@ -24,11 +24,16 @@ function calculateAll() {
 
   updateSubtotal(rubberDuck);
   updateSubtotal(beachTowel);
-  
+
+  let sumOfProducts = 0;
+  for(let i=0; i < everyProductArray.length; i++){
+    sumOfProducts+=updateSubtotal(everyProductArray[i]);
+  }
 
   // ITERATION 3
   totalValue = document.getElementById("total-value");
-  totalValue.innerHTML=`Total: $${updateSubtotal(rubberDuck)+updateSubtotal(beachTowel)}`;
+  totalValue.innerHTML = `Total: $${sumOfProducts}`;
+  // totalValue.innerHTML=`Total: $${updateSubtotal(rubberDuck)+updateSubtotal(beachTowel)}`;
 }
 
 // ITERATION 4
